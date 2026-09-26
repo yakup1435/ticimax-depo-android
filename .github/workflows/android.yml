@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
@@ -39,10 +39,11 @@ jobs:
           /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: APK olustur
+        working-directory: TicimaxDepoAndroid
         run: gradle assembleDebug --stacktrace
 
       - name: APK yukle
         uses: actions/upload-artifact@v4
         with:
           name: TicimaxDepo-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: TicimaxDepoAndroid/app/build/outputs/apk/debug/*.apk
