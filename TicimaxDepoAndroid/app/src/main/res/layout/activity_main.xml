@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="#F3F4F6" android:padding="14dp" android:layout_width="match_parent" android:layout_height="match_parent">
+  <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:text="Depo Stok" android:textStyle="bold" android:textSize="25sp" android:textColor="#111827" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+    <Button android:id="@+id/settings" android:text="Ayarlar" android:layout_width="wrap_content" android:layout_height="48dp"/>
+  </LinearLayout>
+  <androidx.camera.view.PreviewView android:id="@+id/preview" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="240dp" app:scaleType="fillCenter"/>
+  <TextView android:id="@+id/scanStatus" android:text="Barkodu kameraya gösterin" android:gravity="center" android:layout_marginTop="8dp" android:textColor="#6B7280" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <EditText android:id="@+id/barcode" android:hint="Barkod" android:inputType="text" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <Button android:id="@+id/find" android:text="Ürünü Bul" android:layout_marginTop="6dp" android:layout_width="match_parent" android:layout_height="52dp"/>
+  <TextView android:id="@+id/product" android:text="Ürün bekleniyor" android:textStyle="bold" android:textSize="19sp" android:layout_marginTop="14dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <TextView android:id="@+id/info" android:text="Stok ve fiyat bilgisi burada görünecek." android:textColor="#6B7280" android:layout_marginTop="4dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <LinearLayout android:orientation="horizontal" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <Button android:id="@+id/minus" android:text="-1" android:layout_weight="1" android:layout_width="0dp" android:layout_height="52dp"/>
+    <EditText android:id="@+id/stock" android:hint="Stok" android:gravity="center" android:inputType="number" android:layout_weight="1" android:layout_width="0dp" android:layout_height="52dp"/>
+    <Button android:id="@+id/plus" android:text="+1" android:layout_weight="1" android:layout_width="0dp" android:layout_height="52dp"/>
+  </LinearLayout>
+  <EditText android:id="@+id/price" android:hint="Satış fiyatı" android:inputType="numberDecimal" android:layout_marginTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <Button android:id="@+id/saveProduct" android:text="Stok / Fiyat Kaydet" android:layout_marginTop="10dp" android:layout_width="match_parent" android:layout_height="56dp"/>
+</LinearLayout>
