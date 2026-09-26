@@ -12,24 +12,26 @@ jobs:
 
     steps:
       - name: Kodu al
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Java 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
       - name: Android SDK
-        uses: android-actions/setup-android@v4
+        uses: android-actions/setup-android@v3
 
-      - name: Gradle yetkisi
-        run: chmod +x gradlew
+      - name: Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
-      - name: APK oluştur
-        run: ./gradlew assembleDebug
+      - name: APK olustur
+        run: gradle assembleDebug
 
-      - name: APK yükle
+      - name: APK yukle
         uses: actions/upload-artifact@v4
         with:
           name: TicimaxDepo-APK
