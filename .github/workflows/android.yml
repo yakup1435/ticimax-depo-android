@@ -25,14 +25,21 @@ jobs:
         with:
           gradle-version: '8.9'
 
+      - name: Android SDK yolu
+        run: |
+          echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+          echo "/usr/local/lib/android/sdk/cmdline-tools/latest/bin" >> $GITHUB_PATH
+          echo "/usr/local/lib/android/sdk/platform-tools" >> $GITHUB_PATH
+
       - name: Android lisanslari
-        run: yes | sdkmanager --licenses || true
+        run: yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: Android paketlerini kur
-        run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+        run: |
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: APK olustur
-        run: gradle assembleDebug
+        run: gradle assembleDebug --stacktrace
 
       - name: APK yukle
         uses: actions/upload-artifact@v4
