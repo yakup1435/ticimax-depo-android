@@ -1,0 +1,36 @@
+name: Android APK Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodu al
+        uses: actions/checkout@v6
+
+      - name: Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK
+        uses: android-actions/setup-android@v4
+
+      - name: Gradle yetkisi
+        run: chmod +x gradlew
+
+      - name: APK oluştur
+        run: ./gradlew assembleDebug
+
+      - name: APK yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: TicimaxDepo-APK
+          path: app/build/outputs/apk/debug/*.apk
